@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {CHANGE_NUM} from './actionTypes'
 import {useDispatch, useSelector, shallowEqual} from 'react-redux';
+import {change} from './actions'
 
 const NumberInputs = () => {
     const dispatch = useDispatch();
@@ -13,11 +14,7 @@ const NumberInputs = () => {
         setInputs(inputs => ( {...inputs, [name]: +value}));
     }
     const changeNum = (num) => {
-        dispatch({
-            type: CHANGE_NUM,
-            num,
-            value: inputs[num]
-        })
+        dispatch(change(num, inputs[num]))
     }
     return (
         <div>
